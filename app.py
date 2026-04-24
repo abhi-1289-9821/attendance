@@ -10,16 +10,16 @@ import base64
 import numpy as np
 
 app = Flask(__name__)
-app.secret_key = "secret123"
+app.secret_key = ".env"
 
 # ================= MYSQL =================
 
 db = mysql.connector.connect(
     host="localhost",
     user="attendance_user",
-    password="1234",
+    password=".env",
     database="face_attendance",
-    auth_plugin="mysql_native_password",
+    auth_plugin=".env",
 )
 
 cursor = db.cursor()
