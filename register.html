@@ -1,0 +1,239 @@
+<!-- templates/register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Student Registration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    min-height:100vh;
+    padding:40px 0;
+}
+
+.wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.card{
+    width:520px;
+    background:#ffffff;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:0 25px 50px rgba(0,0,0,.22);
+}
+
+.logo{
+    width:72px;
+    height:72px;
+    margin:auto;
+    border-radius:18px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:700;
+}
+
+h1{
+    text-align:center;
+    margin-top:18px;
+    color:#111827;
+}
+
+.sub{
+    text-align:center;
+    color:#6b7280;
+    margin-top:8px;
+    margin-bottom:24px;
+}
+
+.row{
+    margin-bottom:15px;
+}
+
+.row label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    font-weight:600;
+    color:#374151;
+}
+
+.row input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+}
+
+.row input:focus{
+    border-color:#2563eb;
+}
+
+.cam-box{
+    margin-top:18px;
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:16px;
+}
+
+video{
+    width:100%;
+    border-radius:14px;
+}
+
+.status{
+    margin-top:10px;
+    font-size:14px;
+    color:#16a34a;
+    font-weight:600;
+}
+
+.btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.capture{
+    margin-top:14px;
+    background:#111827;
+    color:white;
+}
+
+.register{
+    margin-top:14px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+}
+
+.bottom{
+    text-align:center;
+    margin-top:18px;
+    color:#6b7280;
+}
+
+.bottom a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
+}
+
+canvas{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="card">
+
+    <div class="logo">SA</div>
+
+    <h1>Create Account</h1>
+    <p class="sub">Register with Face Authentication</p>
+
+    <form method="POST">
+
+        <div class="row">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div class="row">
+            <label>Roll Number</label>
+            <input type="text" name="roll_no" required>
+        </div>
+
+        <div class="row">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="row">
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div class="cam-box">
+            <video id="video" autoplay></video>
+            <canvas id="canvas" width="400" height="300"></canvas>
+
+            <input type="hidden" name="image" id="image">
+
+            <button type="button"
+                    class="btn capture"
+                    onclick="captureFace()">
+                Capture Face
+            </button>
+
+            <div class="status" id="status"></div>
+        </div>
+
+        <button type="submit" class="btn register">
+            Register Student
+        </button>
+
+    </form>
+
+    <div class="bottom">
+        Already registered?
+        <a href="/">Login</a>
+    </div>
+
+</div>
+</div>
+
+<script>
+
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const image = document.getElementById("image");
+const statusBox = document.getElementById("status");
+
+navigator.mediaDevices.getUserMedia({
+    video:true
+})
+.then(stream=>{
+    video.srcObject = stream;
+});
+
+function captureFace(){
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(video,0,0,400,300);
+
+    image.value = canvas.toDataURL("image/jpeg");
+
+    statusBox.innerHTML = "Face captured successfully";
+}
+</script>
+
+</body>
+</html>

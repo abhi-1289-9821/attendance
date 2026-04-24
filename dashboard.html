@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="top-header">
+    Student Attendance Portal |
+    Welcome {{ session["roll_no"] }} |
+    <a href="/logout">Signout</a>
+</div>
+
+<div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">Student</a>
+    <a href="#">Examination</a>
+</div>
+
+<div class="container">
+
+    <h2>Class Attendance</h2>
+
+    <div class="form-section">
+        <label><b>Student Roll:</b></label>
+        <select>
+            <option>{{ session["roll_no"] }}</option>
+        </select>
+    </div>
+
+    <div class="form-section">
+        <label><b>Session:</b></label>
+        <select>
+            <option>Spring Semester 2025-26</option>
+        </select>
+    </div>
+
+    <table border="1">
+        <tr>
+            <th>Sl#</th>
+            <th>Subject Code</th>
+            <th>Subject Name</th>
+            <th>Faculty Name</th>
+            <th>Present/Total Class</th>
+            <th>Attendance</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}/{{ row[4] }}</td>
+            <td>{{ row[5] }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if overall is none %}
+        <p class="attendance-msg" style="color:blue;">
+            No classes conducted yet
+        </p>
+
+    {% elif overall >= 75 %}
+        <p class="attendance-msg" style="color:green;">
+            Attendance is above 75% ({{ overall }}%)
+        </p>
+
+    {% else %}
+        <p class="attendance-msg" style="color:red;">
+            Attendance is below 75% ({{ overall }}%)
+        </p>
+    {% endif %}
+
+</div>
+
+<div class="footer">
+    Copyright © 2026, Student Attendance System
+</div>
+
+</body>
+</html>

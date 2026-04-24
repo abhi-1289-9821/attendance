@@ -1,0 +1,153 @@
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Smart Attendance Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.card{
+    width:420px;
+    background:rgba(255,255,255,0.96);
+    padding:40px;
+    border-radius:22px;
+    box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+.logo{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:700;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    margin-top:18px;
+    font-size:30px;
+    color:#111827;
+}
+
+.sub{
+    text-align:center;
+    color:#6b7280;
+    margin-top:8px;
+    margin-bottom:28px;
+}
+
+.input-box{
+    margin-bottom:16px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    font-weight:600;
+    color:#374151;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px 15px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+}
+
+.input-box input:focus{
+    border-color:#2563eb;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+.btn:hover{
+    opacity:.95;
+}
+
+.bottom{
+    text-align:center;
+    margin-top:20px;
+    color:#6b7280;
+}
+
+.bottom a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">SA</div>
+
+    <h1>Welcome Back</h1>
+    <p class="sub">Smart Face Attendance Portal</p>
+
+    <form method="POST">
+
+        <div class="input-box">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button class="btn" type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <div class="bottom">
+        New Student?
+        <a href="/register">Create Account</a>
+    </div>
+
+</div>
+
+</body>
+</html>
