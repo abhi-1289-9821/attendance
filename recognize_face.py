@@ -10,9 +10,9 @@ import time
 db = mysql.connector.connect(
     host="localhost",
     user="attendance_user",
-    password="1234",
+    password=".env",
     database="face_attendance",
-    auth_plugin="mysql_native_password",
+    auth_plugin=".env",
 )
 
 cursor = db.cursor()
