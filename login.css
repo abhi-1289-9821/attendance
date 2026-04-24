@@ -1,0 +1,120 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* ===== LEFT PANEL ===== */
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+}
+
+.left h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.left p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ===== RIGHT PANEL ===== */
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f6fa;
+}
+
+/* ===== LOGIN BOX ===== */
+.login-box {
+    width: 350px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+    margin-bottom: 25px;
+}
+
+/* ===== INPUT ===== */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    color: #777;
+    font-size: 14px;
+    transition: 0.3s;
+    background: white;
+    padding: 0 5px;
+}
+
+/* Floating effect */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -8px;
+    font-size: 12px;
+    color: #667eea;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a67d8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        flex: 1;
+    }
+}
